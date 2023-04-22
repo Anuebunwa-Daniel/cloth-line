@@ -1,0 +1,324 @@
+.top-header {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: black;
+  height: 45px;
+  width: 100%;
+  color: white;
+  padding: 10px;
+  z-index: 3;
+
+
+}
+
+.header-info-section {
+  float: left;
+  font-size: 13px;
+
+}
+
+.header-info-section i {
+  margin-right: 10px;
+
+}
+
+.header-info-section a {
+  text-decoration: none;
+  color: white;
+}
+
+.header-info-section span {
+  margin-right: 50px;
+}
+
+.cart-section {
+  float: right;
+
+}
+
+.cart-section i {
+  margin-right: 10px;
+
+}
+
+.auth a {
+  margin-right: 50px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  height: 30px;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 5px;
+
+}
+
+.nav-section {
+  margin-top: 2.5rem;
+  width: 100%;
+  border: 1px solid black;
+
+}
+
+
+
+nav {
+  margin-top: 45px;
+  margin-bottom: 20px;
+}
+
+.carousel-item {
+  height: 600px;
+}
+
+.carousel-item img {
+  height: 600px;
+  width: 50%;
+  position: absolute !important;
+}
+
+.carousel-item h2 p {
+  color: white !important;
+}
+
+.carousel-caption {
+  border: 1px solid black;
+  width: 500px !important;
+  transform: translateY(-250px);
+
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: relative;
+  border: 1px solid black !important;
+  border-radius: 50%;
+  width: 40px !important;
+  height: 40px;
+  margin-top: 250px;
+  background-color: green !important;
+}
+
+.card img {
+  height: 20rem;
+}
+
+.category-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.top-product-card-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+
+}
+
+.testimony-container {
+  background-color: rgb(210, 196, 196);
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 60px;
+}
+
+.testit .card {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  margin-left: 25%;
+  width: 600px;
+  height: auto
+}
+
+
+.card-title{
+  text-overflow: wrap;
+  text-transform: capitalize;
+}
+
+.card-text{
+  width: 400px;
+  padding: 10px;
+  font-size: 15px;
+  text-align: justify;
+}
+
+.footer {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  background-image: url(../img/bg-image.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.contact i {
+  margin-right: 10px;
+  text-decoration: none;
+  color: white;
+}
+
+.contact a {
+  text-decoration: none;
+  color: white;
+}
+
+.footer-product .a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.footer-product .a:hover {
+  text-decoration: underline;
+  color: wheat;
+
+}
+
+.info {
+  display: block;
+  text-decoration: none;
+  color: white;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.info:hover {
+  text-decoration: underline;
+  color: wheat;
+}
+
+form {
+  margin: 10px auto;
+  width: 70%;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.owl-carousel {
+  position: relative;
+}
+
+
+@media only screen and (max-width: 770px) {
+
+
+  .header-info-section {
+    display: none;
+  }
+
+  .auth {
+    display: flex;
+    justify-items: flex-start;
+  }
+
+  .auth a {
+
+    margin-right: 10px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    padding: 5px;
+    margin-bottom: 40px;
+    border-radius: 5px;
+
+  }
+
+  .header-info-section {
+    font-size: 13px;
+
+  }
+
+  .header-info-section i {
+    margin-right: 10px;
+
+  }
+
+  .header-info-section a {
+    text-decoration: none;
+    color: white;
+  }
+
+  #carouselExampleCaptions {
+    height: 400px;
+    width: 100%;
+  }
+
+  .carousel-caption {
+    border: 1px solid black;
+    width: 500px !important;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    position: relative;
+    border: 1px solid black !important;
+    border-radius: 50%;
+    width: 40px !important;
+    height: 40px;
+    margin-top: 250px;
+
+  }
+
+  .carousel-item img {
+    height: 400px;
+    width: 50%;
+    position: absolute !important;
+  }
+
+  .category-display {
+    display: block;
+  }
+
+  .top-product-card-group {
+    display: block;
+  }
+
+
+  .card {
+    width: 70%;
+    margin: 0px auto;
+  }
+
+  .testimony-container {
+    height: auto !important;
+  }
+  .testit .card {
+    display: block;
+    margin-left: 0;
+    width: 100%;
+    height: auto
+  }
+
+
+
+  .footer-content {
+    display: block;
+    padding: 5px;
+  }
+
+  .contact {
+    margin-bottom: 20px;
+  }
+
+  .futher-info {
+    margin-top: 20px;
+  }
+
+  form {
+    display: block;
+  }
+}

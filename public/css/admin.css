@@ -1,0 +1,16 @@
+body{
+    background-color: black;
+}
+#imgPreview{
+    margin: 20px;
+
+}
+.img-edit{
+    margin: 20px;
+    height: 100px;
+    width: 100px;
+}
+#proImage{
+    height: 100px;
+    width: 100px;
+}

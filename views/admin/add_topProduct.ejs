@@ -1,0 +1,44 @@
+<%- include('../layouts/adminheader') %>
+
+    <h2 class="page-title">Add category</h2>
+    <a href="/admin/topProducts" class="btn btn-success">Back to all top products</a>
+    <br><br>
+
+    <form method="post" action="/admin/topProducts/add_topProduct" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="">Title</label>
+            <input type="text" class="form-control" name="title" placeholder="Title" >
+        </div>
+
+        <div class="form-group">
+            <label for="">Category</label>
+            <select name="category" class="form-control">
+                <% categories.forEach ((cat)=> {%>
+                    <option value="<%= cat.slug %>">
+                        <%= cat.title %>
+                    </option>
+                    <% }) %>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="">Price</label>
+            <input type="text" class="form-control" name="price" placeholder="price" value="<%= price %>">
+        </div>
+        <div class="form-group">
+            <label for="">Discount</label>
+            <input type="text" class="form-control" name="discount" placeholder="Discount" value="<%= discount %>">
+        </div>
+        <div class="form-group">
+            <label for="">Image</label>
+            <input type="file" class="form-control" name="image2" id="img" onchange="previewImage(event);" />
+
+            <img src="#" id="imgPreview" alt="">
+        </div>
+        <br>
+        <button class="btn btn-success">Submit</button>
+    </form>
+
+  
+
+    <%- include('../layouts/adminfooter') %>

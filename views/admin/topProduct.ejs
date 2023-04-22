@@ -1,0 +1,58 @@
+<%- include('../layouts/adminheader') %>
+
+    <h2 class="page-title">Top Products</h2>
+    <a href="/admin/topProducts/add_topProduct" class="btn btn-success">Add a new TopProduct</a>
+    <br><br>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>image</th>
+                <th>category</th>
+                <th>price</th>
+                <th>discount</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% topPro.forEach((top)=>{ %>
+                <tr>
+                    <td>
+                        <%= top.title %>
+                    </td>
+
+
+                    <td>
+                        <img  id="proImage" src="<%= top.image %>" alt="">
+                        
+                    </td>
+                    
+                    <td>
+                        <%= top.category %>
+                    </td>
+
+                    <td> $<%= parseFloat(top.price).toFixed(2) %>
+                    </td>
+                    <td> %<%= top.discount %>
+                    </td>
+
+
+                    <td><a href="/admin/topProducts/edit_topProduct/<%= top._id %> ">Edit</a></td>
+
+                    <td><a class="confirmDeletion" href="/admin/topProducts/delete-topProduct/<%= top._id %> ">Delete</a>
+                    </td>
+
+
+                </tr>
+           
+                <% }) %>
+
+        </tbody>
+    </table>
+
+
+
+
+    <%- include('../layouts/adminfooter') %>
