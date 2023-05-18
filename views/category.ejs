@@ -1,0 +1,26 @@
+<%- include ('layouts/header') %> 
+
+<div class="container">
+    <div class="row products mt-4 mb-3">
+        <% products.forEach((product)=> { %>
+            <div class="col-12 col-md-4 p">
+    
+                <img class="pimage" src="<%= product.image %>" alt="">
+            
+                <h3 style="text-transform: capitalize;"><%= product.title %></h3>
+                <div class="desc" style=" width: 300px; font-weight: bold;">
+                <p><%= product.desc %></p>
+                </div>
+                <h4>$<%= parseFloat(product.price).toFixed(2) %></h4>
+                <div style="display: grid; grid-template-columns: 1fr 2fr; grid-gap:15px">
+                    <a href="/products/<%= product.category %>/<%= product.slug %>" class="vd  btn btn-success mb-3">View Details</a>
+                     
+                     
+                    <p><a class="btn btn-success" href="/cart/add/<%= product.slug %>">Add to cart</a></p>
+                    </div>
+            </div>
+    <%  }) %>
+    </div>
+    </div>
+
+    <%- include ('layouts/footer') %>

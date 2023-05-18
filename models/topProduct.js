@@ -22,6 +22,9 @@ const topProductSchema = mongoose.Schema({
     },
     discount:{
         type: Number,
+    },
+    disP:{
+        type: Number
     }
 });
 

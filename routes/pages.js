@@ -10,6 +10,7 @@ const { check, validationResult } = require('express-validator');
 const TopProduct = require('../models/topProduct')
 const Category = require('../models/category')
 const testimony = require('../models/testimony');
+const Product = require('../models/product')
 
 
 // get / page
@@ -21,6 +22,7 @@ router.get('/', async (req, res) => {
 
     try {
         const categories = await Category.find()
+        const products = await Product.find()
         const testimonies = await testimony.find()
         const topProduct = await TopProduct.find()
 
@@ -29,7 +31,8 @@ router.get('/', async (req, res) => {
             title: 'Bigsteppers',
             categories: categories,
             testimonies: testimonies,
-            topProduct: topProduct
+            topProduct: topProduct,
+            products: products
 
         });
 
@@ -40,7 +43,27 @@ router.get('/', async (req, res) => {
 })
 
 
+// get top product page
+router.get('/topProduct', async(req, res)=>{
+    try {
+        const categories = await Category.find()
+        const products = await Product.find()
+        const topProduct = await TopProduct.find()
 
+
+        res.render('topProduct', {
+            title: 'Top product',
+            categories: categories,
+            topProduct: topProduct,
+            products: products
+
+        });
+
+    }catch(err) {
+        // console.log(err);
+        res.status(500).send('Server');
+    }
+})
 router.post('/testimony', upload.single('image'), [
     check('name').notEmpty().withMessage('please kindly tell us your name'),
     check('comment', 'please kindly tell us what you think about our product or services').notEmpty(),

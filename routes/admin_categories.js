@@ -180,9 +180,7 @@ router.get('/delete-categories/:id', async (req, res) => {
     try {
         const cat = await Category.findById(req.params.id)
         const public_id = cat.public_id
-        await cloudinary.uploader.destroy(public_id, function (error, result) {
-            console.log(result, error);
-        });
+        await cloudinary.uploader.destroy(public_id, function (error, result) {});
 
         const category = await Category.findByIdAndDelete(req.params.id)
         const categories = await Category.find()

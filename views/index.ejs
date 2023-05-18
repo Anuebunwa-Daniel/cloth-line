@@ -1,101 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title><%= title %></title>
-  <!-- link to style.css -->
-  <link rel="stylesheet" href="css/style.css">
-
-  <!-- bootstrap cdn -->
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-
-  <!-- Load fonts style after rendering the layout styles -->
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-
-  <!-- owlcarousel -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
-    integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css"
-    integrity="sha512-OTcub78R3msOCtY3Tc6FzeDJ8N9qvQn1Ph49ou13xgA9VsH9+LRxoFU6EqLhW4+PKRfU+/HReXmSZXHEkpYoOA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <!-- fontawesome -->
-  <script src="https://kit.fontawesome.com/0c6ddb1ebe.js" crossorigin="anonymous"></script>
-</head>
-
-<body>
-
-  <header class="top-header">
-
-    <div class="header-info-section">
-      <span> <i class="fa-solid fa-envelope"></i><a href="#">info@Bigstepers.com</a></span>
-      <span> <i class="fa-solid fa-phone"> 08036541679</i></span>
-    </div>
-
-    <div class="cart-section">
-      <i class="fa-solid fa-cart-shopping"></i>
-      <i class="fa-brands fa-facebook"></i>
-      <i class="fa-brands fa-linkedin"></i>
-      <i class="fa-brands fa-instagram"></i>
-    </div>
-
-    <div class="auth">
-      <a href="#" class="btn btn-success">Login</a>
-      <a href="#" class="btn btn-success">Singup</a>
-    </div>
-  </header>
-
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">BigStepper</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="menu" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Categories
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="menu">
-              <li><a class="dropdown-item" href="/all-products">All Products</a></li>
-              <li class="dropdown">
-              </li>
-              <% categories.forEach((cat)=>{ %>
-              <li><a class="dropdown-item" href="/<%= cat.slug %>"><%= cat.title %></a></li>
-              <li class="dropdown">
-              </li>
-              <% }) %>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact us</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-
+<%- include ('layouts/header') %> 
 
   <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
 
@@ -144,14 +47,14 @@
 
     <div class="display ">
       <div class="category-display ">
-        <% categories.sort(() => Math.random() - 0.5);
-         categories.slice(0, 4).forEach((cat)=>{ %>
+        <% categories.sort(() => Math.random() - 0.5); %>
+        <%  categories.slice(0, 4).forEach((cat)=>{ %>
                   <div class="card mt-3">
             <img src="<%= cat.image %>" class="card-img-top" alt="...">
           <div class="card-body text-center">
             <h5 class="card-title"><%= cat.title %></h5>
 
-            <a href="#" class="btn btn-success">Go Shopping</a>
+            <a href="/products/<%= cat.slug %>" class="btn btn-success">Go Shopping</a>
           </div>
         </div>
         <%  }) %>
@@ -159,7 +62,7 @@
 
       <div class="view text-center mt-3">
         <h3 class="">Go to products to view all categories</h3>
-        <a href="#" class="btn btn-success text-center">Products &#8594</a>
+        <a href="/products" class="btn btn-success text-center">Products &#8594</a>
       </div>
     </div>
 
@@ -185,7 +88,7 @@
                 <p style="font-weight:bold ;">Discout:</p> <%= top.discount %>%
               </span>
             </span>
-            <a href="#" class="btn btn-success mt-3">Checkout &#8594</a>
+            <a href="/topProduct" class="btn btn-success mt-3">Checkout &#8594</a>
           </div>
         </div>
          <% }) %>
@@ -251,8 +154,9 @@
         <div class="footer-product">
           <h3 class="text-center" style="color: white; font-weight: bold;">products</h3>
           <hr style="color: white; font-weight: bold;">
+          <a class=" a btn btn-success mb-3" href="/products">All Products</a>
           <% categories.forEach((cat)=>{ %>
-            <a class="a btn btn-success mb-3 " href="#">
+            <a class="a btn btn-success mb-3 " href="/products/<%= cat.slug %>">
               <%= cat.title %>
             </a>
 
@@ -263,7 +167,7 @@
           <h3 class="text-center" style="color: white; font-weight: bold;">Further Info</h3>
           <hr style="color: white; font-weight: bold;">
           <ul class="" style="list-style: none;">
-            <li><a class="info btn btn-success mb-3" href="#">HOME</a></li>
+            <li><a class="info btn btn-success mb-3" href="/">HOME</a></li>
             <li><a class="info btn btn-success mb-3" href="#">ABOUT US</a></li>
             <li><a class="info btn btn-success mb-3" href="#">FAQS</a></li>
           </ul>
@@ -288,7 +192,7 @@
         
        
         <form class="" action="testimony" method="post" enctype="multipart/form-data">
-          <div>
+          <div style="color:white;">
             <label for="Name">Name</label>
       
               <input type="text" placeholder="Name" class="form-control" name="name">
@@ -296,11 +200,11 @@
             
 
           </div>
-          <div>
+          <div style="color:white;">
             <label for="comment">Comment</label>
             <textarea type="text" placeholder="Comment" class="form-control" name="comment" maxlength="100"></textarea>
           </div>
-          <div>
+          <div style="color:white;">
             <label for="image">Image</label>
             <input type="file" class="form-control" name="image">
           </div>
@@ -321,27 +225,7 @@
 
     </div>
 
+    <%- include ('layouts/footer') %> 
 
 
-    <!-- bootstrap javascript cdn -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-      crossorigin="anonymous"></script>
-
-    <!-- owl carousel -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
-      integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
-      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
-      integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
-      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"
-      integrity="sha512-gY25nC63ddE0LcLPhxUJGFxa2GoIyA5FLym4UJqHDEMHjp8RET6Zn/SHo1sltt3WuVtqfyxECP38/daUc/WVEA=="
-      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script src="js/owlCarousel.js"></script>
-</body>
-
-</html>
+   

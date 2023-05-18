@@ -1,8 +1,8 @@
 <%- include('../layouts/adminheader') %>
 
     <h2 class="page-title">Products</h2>
-    <a href="/admin/products/add_product" class="btn btn-success">Add  products</a>
-    <a href="/admin/products" class="btn btn-success">Back</a>
+    <a href="/admin/products/add_products" class="btn btn-success">Add  products</a>
+    
     <br><br>
   
     <table class="table table-striped alignmiddle">
@@ -14,6 +14,7 @@
                 <th>Product image</th>
                 <th>Edit</th>
                 <th>Delete</th>
+                <th>Add Gallery</th>
             </tr>
         </thead>
         <tbody>
@@ -23,14 +24,14 @@
                     <td>$<%= parseFloat(product.price).toFixed(2)%></td>
                     <td><%= product.category %></td>
                     <td>
-                       <img id="proImage" src="/product_images/<%= product.slug %>/<%= product.image %>" alt=""> 
+                       <img id="proImage" src="<%= product.image %>" alt=""> 
                          
                     </td>
-                    <td><a href="/admin/products/edit-product/<%= product._id %> ">Edit</a></td>
+                    <td><a class="btn btn-success" href="/admin/products/edit_products/<%= product._id %> ">Edit</a></td>
 
-                    <td><a class="confirmDeletion" href="/admin/products/delete-product/<%= product._id %> ">Delete</a></td>
+                    <td><a class="confirmDeletion btn btn-success" href="/admin/products/delete-product/<%= product._id %> ">Delete</a></td>
         
-
+                    <td><a class="btn btn-success" href="/admin/products/add-gallery/<%= product._id %> ">Add Gallery</a></td>
                 </tr>
                 <% }) %>
 

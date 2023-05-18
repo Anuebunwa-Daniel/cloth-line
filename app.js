@@ -6,11 +6,8 @@ const path = require('path')
 const bodyParser =require('body-parser')
 const router = express.Router();
 const session = require('express-session')
-const mkdirp = require('mkdirp')
-const fs = require('fs-extra')
 const resizeImg = require('resize-img')
 const {check,validationResult} = require('express-validator');
-// const configureFileUpload = require('./utis/uploadfile');
 // const passport = require('passport')
 const multer =require('multer')
 const {cloudinary} =require('./utis/cloudinary')
@@ -56,57 +53,20 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-//Expree session middleware
+//Express session middleware
 app.use(session({
     secret: 'keyboard cat',
     resave: true,
     saveUninitialized: true,
-    cookie: { secure: true }
+    // cookie: { secure: true }
 }))
 
+app.get('*', (req, res, next)=>{
+    res.locals.cart = req.session.cart;
+    res.locals.user = req.user|| null;
+    next()
+})
 
-
-
-
-// const validateFile = [
-//     check('image').notEmpty().withMessage('Please upload an image'),
-//   ];
-// app.use(expressValidator({
-//     errorFormatter: function (param, msg, value) {
-//         var namespace = param.split('.')
-//             , root = namespace.shift()
-//             , formParam = root
-//         while (namespace.length) {
-//             formParam += '[' + namespace.shift() + ']'
-//         }
-//         return {
-//             param: formParam,
-//             msg: msg,
-//             value: value
-//         }
-
-//     },
-//     customValidators: {
-//         isImage: (value, filename) => {
-//             var extension = (path.extname(filename)).toLowerCase();
-
-//             switch (extension) {
-//                 case '.jpg':
-//                     return '.jpg';
-//                 case '.jpeg':
-//                     return '.jpeg';
-//                 case '.png':
-//                     return '.png';
-//                 case '':
-//                     return '.jpg';
-//                 default:
-//                     return false;
-//             }
-//         }
-//     }
-
-
-// }))
 
 //Express message middleware
 app.use(require('connect-flash')());
@@ -117,7 +77,9 @@ app.use(function (req, res, next) {
 
 // set router
 // for the front end
+const products = require("./routes/products.js")
 const pages = require("./routes/pages.js")
+const cart = require('./routes/cart.js')
 // for the admin area
 const topProduct = require("./routes/topProducts.js")
 const adminCategories = require("./routes/admin_categories.js")
@@ -125,7 +87,9 @@ const adminProducts = require("./routes/admin_products.js")
 
 
 // for the front end
+app.use('/products', products)
 app.use('/', pages)
+app.use('/cart', cart)
 
 
 // for the admin area

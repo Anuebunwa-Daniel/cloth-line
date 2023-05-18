@@ -11,7 +11,7 @@ const path = require('path')
 //get page model
 const Category = require('../models/category')
 const topProduct = require('../models/topProduct');
-const category = require('../models/category');
+const Product = require('../models/product')
 
 
 
@@ -84,8 +84,9 @@ router.post('/add_topProduct', upload.single('image2'), [
     } else {
         try {
             const topPro = await topProduct.findOne({ slug: slug })
+            const pro = await  Product.findOne({slug:slug})
             cat = await Category.find()
-            if (topPro) {
+            if (topPro || pro) {
                 req.flash('danger', 'Title already exists, choose another')
                 res.render('admin/add_topProduct', {
                     title: title,
@@ -96,12 +97,14 @@ router.post('/add_topProduct', upload.single('image2'), [
                     topPro: topPro
                 })
             } else {
-                const mainPrice = parseFloat(price).toFixed(2)
+                let dis = price/100 * discount;
+                const disPrice = parseFloat( price - dis).toFixed(2);
                 const newtopPro = new topProduct({
                     title: title,
                     slug: slug,
                     category: category,
-                    price: mainPrice,
+                    price: price,
+                    disP:disPrice,
                     discount: discount,
                     image: result.url,
                     public_id: result.public_id
@@ -115,6 +118,7 @@ router.post('/add_topProduct', upload.single('image2'), [
                     title: title,
                     slug: slug,
                     price: price,
+                    disP:disPrice,
                     discount: discount,
                     image: image,
                     categories: categories,
@@ -143,6 +147,7 @@ router.get('/edit_topProduct/:id', async (req, res) => {
     res.render('admin/edit_topProduct', {
         title: topPro.title,
         price: topPro.price,
+        disP: topPro.disPrice,
         discount: topPro.discount,
         image: topPro.image,
         categories: categories,
@@ -187,7 +192,8 @@ router.post('/edit_topProduct/:id',upload.single('image2'), [
             const categories = await Category.find()
             // const top = await topProduct.find()
             const topPro = await topProduct.findOne({slug:slug, id:{'$ne':id}})
-            if(topPro){
+            const pro = await  Product.findOne({slug:slug})
+            if(topPro || pro){
                 req.flash('danger', 'Top product title already exists, choose another')
                 res.render('admin/edit_topProduct',{
                     title: title,
@@ -215,15 +221,14 @@ router.post('/edit_topProduct/:id',upload.single('image2'), [
                     width: 300,
                     height: 300
                 })
-
-                // const category = await Category.find() 
-                // console.log(category)
-                const mainPrice = parseFloat(price).toFixed(2)
+                let dis = price/100 * discount;
+                const disPrice = parseFloat( price - dis).toFixed(2);
                 const top = await topProduct.updateOne({_id:id},{
                     title: title,
                     slug: slug,
                     // category: category,
-                    price: mainPrice,
+                    price: price,
+                    disP:disPrice,
                     discount: discount,
                     image: result.url,
                     public_id: result.public_id, 

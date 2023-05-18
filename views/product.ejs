@@ -1,0 +1,43 @@
+<%- include ('layouts/header') %>
+    <div class="container">
+        <div class="row">
+            <h1 class="page-header text-center" style="text-transform: uppercase;">
+                <%= p.title %>
+            </h1>
+            <div class="col-12 col-md-5">
+                <img src="<%= p.image %>" alt="" class="spi">
+                <br>
+            </div>
+            <div class="col 12 col-md-7" style="font-size: 25px; text-transform: capitalize;">
+                <div class="desc">
+                    <p>
+                        <%= p.desc %>
+                    </p>
+                </div>
+                <p>$<%= parseFloat(p.price).toFixed (2) %>
+                </p>
+
+                <p><a class="btn btn-success" href="/cart/add/<%= p.slug %>">Add to cart</a></p>
+
+
+            </div>
+
+            <div class="col-12">
+                <ul class="gallery text-center">
+                    <% gallery.images.forEach((gal)=>{ %>
+                        <li>
+                            <a data-fancybox="gallery" href="<%= gal.url %>">
+
+                                <img class="details" src="<%= gal.url %>" alt="">
+                            </a>
+                        </li>
+
+                        <% }) %>
+
+                </ul>
+            </div>
+
+        </div>
+        </div>
+
+        <%- include ('layouts/footer') %>

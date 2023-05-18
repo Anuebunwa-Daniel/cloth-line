@@ -1,0 +1,87 @@
+<%- include('../layouts/adminheader') %>
+    <div class="container">
+        <h3 class="page-header">Gallery </h3>
+        <ul class="gallery">
+
+            <% if(gallery !== null) { %>
+            <% gallery.images.forEach((gal)=>{ %>
+                    <li style="display: inline-block;">
+                        <img src="/product_images/<%= id %>/gallery/<%= gal.url %> " alt="">&nbsp;
+                        <a class="confirmDeletion"
+                            href="/admin/products/delete-image/?id=<%= id %> ">delete</a>
+                    </li>
+                    <%}) %>
+                    <% } %>
+        </ul>
+        <form id="upload-form" action="/admin/products/add-gallery/<%= id %>" method="post"
+            enctype="multipart/form-data">
+            <input type="file" id="file-input" name="file" multiple>
+            <button id="upload-button" type="submit">Upload</button>
+        </form>
+
+        <br><br>
+
+
+
+
+
+    </div>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-core/2.10.0/cloudinary-core-shrinkwrap.min.js"></script>
+
+
+
+
+    <!-- previewImage -->
+    <script>
+        const previewImage = (event) => {
+            const imageFiles = event.target.files;
+            const imageFilesLength = imageFiles.length;
+
+            if (imageFilesLength > 0) {
+                const imageSrc = URL.createObjectURL(imageFiles[0]);
+
+                const imgPreview = document.querySelector('#imgPreview');
+
+                imgPreview.src = imageSrc;
+
+                imgPreview.style.display = "block";
+                imgPreview.style.height = "80px";
+                imgPreview.style.width = "80px";
+
+
+
+            }
+        }
+
+        dropezone
+        Dropzone.options.dropzoneForm = {
+            acceptedFiles: 'image/*',
+            init: function () {
+                this.on("queuecomplete", function (file) {
+                    setTimeout(function () {
+                        location.reload()
+                    }, 1000)
+                })
+            }
+        }
+        cloudinary.config({
+            cloud_name: 'dipnlz9n1',
+            api_key: '855298344528228',
+            api_secret: 'H0ADEnihr9gGKqJgb45Zb7E2Um8',
+        });
+
+        document.getElementById("upload-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            var file = document.getElementById("file-input").files[0];
+
+            cloudinary.uploader.upload(file, function (result) {
+                console.log(result);
+            });
+        });
+
+
+    </script>
+
+    <%- include('../layouts/adminfooter') %>
