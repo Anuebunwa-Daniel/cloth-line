@@ -1,21 +1,159 @@
-body{
+body {
     background-color: black;
 }
-#imgPreview{
+
+#imgPreview {
     margin: 20px;
 
 }
-.img-edit{
+
+.img-edit {
     margin: 20px;
     height: 100px;
     width: 100px;
 }
-#proImage{
+
+#proImage {
     height: 100px;
     width: 100px;
 }
-.gal_details{
-    height: 100px;
-    width: 100px;
+
+.gal_details {
+    height: 150px;
+    width: 150px;
     margin: 20px;
-  }
+}
+
+#btn {
+
+    padding: 10px;
+}
+
+
+.top-header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: black;
+    height: 45px;
+    width: 100%;
+    color: white;
+    padding: 10px;
+    z-index: 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+
+}
+
+
+.header-info-section i {
+    margin-right: 10px;
+
+}
+
+.header-info-section a {
+    text-decoration: none;
+    color: white;
+}
+
+.auth {
+
+}
+#log {
+    width: 100px;
+}
+
+.navbar {
+    margin-top: 45px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10%;
+    margin-top: 50px;
+
+    color: white;
+}
+
+.card {
+    border: none;
+}
+
+.category,
+.products,
+.topProduct {
+    width: 200px;
+    height: 145px;
+    border-radius: 5px;
+    background-color: green;
+}
+
+.board {
+    width: 200px;
+    height: 250px;
+    text-decoration: none;
+    color: white;
+}
+
+.board i {
+    font-size: 100px;
+    margin-left: 20%;
+    margin-top: 20px;
+}
+
+
+@media only screen and (max-width: 770px) {
+    .top-header{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap:10px;
+    }
+    .header-info-section {
+        display: none;
+    }
+
+    .auth {}
+
+ #log {
+        width: 100px;
+        margin-left: 20%;
+    }
+
+    .cards {
+        display: block;
+        margin: 10px auto;
+        width: 40%;
+
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .category,
+    .products,
+    .topProduct {
+        width: 100%
+    }
+
+    #cats {
+
+        font-size: 100px;
+
+
+    }
+
+    #cat {
+        font-size: 100px;
+        margin-left: -20px;
+
+    }
+
+
+
+
+
+
+}

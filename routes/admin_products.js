@@ -11,7 +11,7 @@ const { models } = require('mongoose');
 const Category = require('../models/category')
 const Product = require('../models/product.js')
 const Gallery = require('../models/gallery.js')
-// const { Console } = require('console');
+
 
 //Get product index
 router.get('/', async (req, res) => {
@@ -27,6 +27,11 @@ router.get('/', async (req, res) => {
         res.status(500).send('Server Error');
     }
 });
+
+// get the admin dashboard
+router.get('/home', async(req, res)=>{
+    res.render('admin/home')
+})
 
 //Get add product
 router.get('/add_products', async (req, res) => {
@@ -318,7 +323,27 @@ router.get('/delete-product/:id', async (req, res) => {
 
 })
 
+//delete galery image
+router.get('/delete-image/:id', async(req, res)=>{
+    try{
+        const id = req.params.id
+        const gallery = await Gallery.findOne({id: req.params.id})
+      
 
+
+        gallery.images.forEach (async(img) => {
+            const public_id = img.public_id;
+            console.log(public_id);
+            await cloudinary.uploader.destroy(public_id, function (error, result){})
+        });
+        const gal = await Gallery.findOneAndDelete({id: id})
+        req.flash('danger', 'product deleted')
+        res.redirect('/admin/products/')
+    }catch(err){
+        console.log(err)
+    }
+})
+ 
 
 
 

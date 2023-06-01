@@ -1,10 +1,10 @@
 <%- include('../layouts/adminheader') %>
 
     <h2 class="page-title">Products</h2>
-    <a href="/admin/products/add_products" class="btn btn-success">Add  products</a>
-    
+    <a href="/admin/products/add_products" class="btn btn-success">Add products</a>
+
     <br><br>
-  
+
     <table class="table table-striped alignmiddle">
         <thead>
             <tr class="home">
@@ -20,24 +20,41 @@
         <tbody>
             <% products.forEach((product)=>{ %>
                 <tr>
-                    <td><%= product.title %></td>
-                    <td>$<%= parseFloat(product.price).toFixed(2)%></td>
-                    <td><%= product.category %></td>
                     <td>
-                       <img id="proImage" src="<%= product.image %>" alt=""> 
-                         
+                        <%= product.title %>
                     </td>
-                    <td><a class="btn btn-success" href="/admin/products/edit_products/<%= product._id %> ">Edit</a></td>
+                    <td>$<%= parseFloat(product.price).toFixed(2)%>
+                    </td>
+                    <td>
+                        <%= product.category %>
+                    </td>
+                    <td>
+                        <img id="proImage" src="<%= product.image %>" alt="">
 
-                    <td><a class="confirmDeletion btn btn-success" href="/admin/products/delete-product/<%= product._id %> ">Delete</a></td>
-        
-                    <td><a class="btn btn-success" href="/admin/products/add-gallery/<%= product._id %> ">Add Gallery</a></td>
+                    </td>
+                    <td><a class="btn btn-success" href="/admin/products/edit_products/<%= product._id %> ">Edit</a>
+                    </td>
+
+                    <td><a class="confirmDeletion btn btn-success"
+                            href="/admin/products/delete-product/<%= product._id %> ">Delete</a></td>
+
+                    <td><a class="btn btn-success" href="/admin/products/add-gallery/<%= product._id %> ">Add
+                            Gallery</a></td>
                 </tr>
                 <% }) %>
 
         </tbody>
     </table>
 
-  
+    <script>
+        const confirmationLinks = document.querySelectorAll('a.confirmDeletion');
+        confirmationLinks.forEach(link => {
+            link.addEventListener('click', event => {
+                if (!confirm('Confirm deletion')) {
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
 
     <%- include('../layouts/adminfooter') %>

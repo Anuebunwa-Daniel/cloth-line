@@ -6,24 +6,22 @@
             <% if(gallery !== null) { %>
             <% gallery.images.forEach((gal)=>{ %>
                     <li style="display: inline-block;">
-                        <img src="/product_images/<%= id %>/gallery/<%= gal.url %> " alt="">&nbsp;
-                        <a class="confirmDeletion"
-                            href="/admin/products/delete-image/?id=<%= id %> ">delete</a>
+                        <img class="gal_details" src="<%= gal.url %> " alt="">&nbsp;
+                        
                     </li>
                     <%}) %>
+                   
                     <% } %>
         </ul>
+
+        <a class="confirmDeletion btn btn-success" id="btn"
+        href="/admin/products/delete-image/<%= id %> ">Delete</a>
+        <br><br>
         <form id="upload-form" action="/admin/products/add-gallery/<%= id %>" method="post"
             enctype="multipart/form-data">
             <input type="file" id="file-input" name="file" multiple>
             <button id="upload-button" type="submit">Upload</button>
         </form>
-
-        <br><br>
-
-
-
-
 
     </div>
     <script

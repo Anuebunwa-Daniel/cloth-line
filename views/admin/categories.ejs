@@ -1,7 +1,7 @@
 <%- include('../layouts/adminheader') %>
 
     <h2 class="page-title">Categories</h2>
-    <a href="/admin/categories/add_category" class="btn btn-primary">Add a new Categories</a>
+    <a href="/admin/categories/add_category" class="btn btn-success">Add a new Categories</a>
     <br><br>
 
     <table class="table table-striped">
@@ -23,9 +23,9 @@
                     <td>
                       <img id="proImage" src=" <%= cat.image %>" alt=""> 
                     </td>
-                    <td><a href="/admin/categories/edit_category/<%= cat._id %> ">Edit</a></td>
+                    <td><a class ="btn btn-success" href="/admin/categories/edit_category/<%= cat._id %> ">Edit</a></td>
                 
-                    <td><a class="confirmDeletion" href="/admin/categories/delete-categories/<%= cat._id %> ">Delete</a></td>
+                    <td><a class="confirmDeletion btn btn-success" href="/admin/categories/delete-categories/<%= cat._id %> ">Delete</a></td>
         
 
                 </tr>

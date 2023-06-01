@@ -11,7 +11,7 @@
     <!-- <link rel="stylesheet" href="/css/style.css"> -->
     <link rel="stylesheet" href="/css/admin.css">
     <!-- link to js files -->
-    <script src="/js/main.js"></script>
+    <script src="js/main.js"></script>
 
     <!-- bootstrap cdn -->
 
@@ -31,8 +31,6 @@
         integrity="sha512-OTcub78R3msOCtY3Tc6FzeDJ8N9qvQn1Ph49ou13xgA9VsH9+LRxoFU6EqLhW4+PKRfU+/HReXmSZXHEkpYoOA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/0c6ddb1ebe.js" crossorigin="anonymous"></script>
 </head>
@@ -50,7 +48,7 @@
             <h6 style="margin-top: -5px;"> Hi Admin Anuebunwa </h6>
             
         </div>
-        <a href="#" class="btn btn-success" id="log" style="margin-top: -5px;">Logout</a>
+        <a href="/admin/adminUser/logout" class="btn btn-success" id="log" style="margin-top: -5px;">Logout</a>
     </header>
 
 
@@ -77,4 +75,42 @@
     </nav>
 
     <h3 class="text-center mt-4">BigStepper Admin Dashboard</h3>
+
     <div class="container">
+        <div class="cards">
+
+        <div class="cardd">
+            <div class="category">
+                <a class="board" id="cat" href="/admin/categories">
+                    <i class="fa-solid fa-cart-flatbed"></i>
+                </a>
+            </div>
+            <h4 class=" text-center mt-5" style="color:black;">CATEGORY</h4>
+          </div>
+
+          <div class="cardd">
+            <div class="products">
+                <a  class="board" id="cats" href="/admin/products">
+                    <i class="fa-brands fa-product-hunt"></i>
+                </a>
+            </div>
+            <h4  class=" text-center mt-5"style="color:black;">PRODUCT</h4>
+          </div>
+
+
+          <div class="cardd" >
+            <div class="topProduct">
+                <a  class="board"  id="cats"  href="/admin/topProducts">
+                    <i class="fa-solid fa-jet-fighter-up"></i>
+                </a>
+            </div>
+            <h4  class=" text-center mt-5" style="color:black;">TOP-PRODUCT</h4>
+          </div>
+
+   </div>
+
+
+    </div>
+
+
+    <%- include('../layouts/adminfooter') %>

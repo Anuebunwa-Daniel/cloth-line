@@ -6,12 +6,14 @@ const path = require('path')
 const bodyParser =require('body-parser')
 const router = express.Router();
 const session = require('express-session')
-const resizeImg = require('resize-img')
 const {check,validationResult} = require('express-validator');
 // const passport = require('passport')
 const multer =require('multer')
 const {cloudinary} =require('./utis/cloudinary')
 const upload = require('./utis/multer')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const cookieParser =require('cookie-parser')
 
 
 
@@ -31,6 +33,9 @@ const app = express()
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
+
+//set up cookie-parser
+app.use(cookieParser());
 
 // set public folder
 app.use(express.static(path.join(__dirname, 'public')))
@@ -80,10 +85,13 @@ app.use(function (req, res, next) {
 const products = require("./routes/products.js")
 const pages = require("./routes/pages.js")
 const cart = require('./routes/cart.js')
+
 // for the admin area
 const topProduct = require("./routes/topProducts.js")
 const adminCategories = require("./routes/admin_categories.js")
 const adminProducts = require("./routes/admin_products.js")
+const adminUser = require("./routes/adminUser.js")
+
 
 
 // for the front end
@@ -96,6 +104,7 @@ app.use('/cart', cart)
 app.use('/admin/topProducts', topProduct)
 app.use('/admin/categories', adminCategories)
 app.use('/admin/products', adminProducts)
+app.use('/admin/adminUser', adminUser)
 
 
 

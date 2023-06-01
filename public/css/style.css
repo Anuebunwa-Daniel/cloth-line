@@ -235,11 +235,14 @@ form {
   transform: translate(-50%, -50%);
   text-align: center;
 }
+.ajaxT{
+margin-top: 50%;
+}
 #ajax{
   /* height: 50px; */
   /* width: 50px; */
-  margin-left: 0%;
-  /* margin-top: 10%; */
+  /* margin-left: 0%; */
+  margin-top: 0px;
 }
 .ajaxbg{
   position: absolute;
@@ -266,9 +269,11 @@ form {
   }
 
   .auth {
-    display: flex;
-    justify-items: flex-start;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
   }
+
 
   .auth a {
 
