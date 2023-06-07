@@ -1,3 +1,3 @@
 module.exports = {
-    database:'mongodb://localhost:27017/bigsteper'
+    database:'mongodb+srv://dahumble:A123456s@bigs.nogdk7m.mongodb.net/'
 }
