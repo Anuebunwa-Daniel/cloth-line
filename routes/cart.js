@@ -12,23 +12,23 @@ const Category =require('../models/category')
 const TopProduct = require('../models/topProduct')
 const User = require('../models/user')
 
-function protectRoute(req, res, next){
-    const token = req.cookies.token
-    try{
-        const user = jwt.verify(token, 'user')
+// function protectRoute(req, res, next){
+//     const token = req.cookies.token
+//     try{
+//         const user = jwt.verify(token, 'user')
 
-        req.user = user
-        // console.log(req.user)
-        next()
-    }
-    catch(err){
-        res.clearCookie('token')
-        req.flash('danger', 'You have to be logged in to view your cart')
+//         req.user = user
+//         // console.log(req.user)
+//         next()
+//     }
+//     catch(err){
+//         res.clearCookie('token')
+//         req.flash('danger', 'You have to be logged in to view your cart')
 
-        req.session.lastPage = req.originalUrl;
-        return res.redirect('/')
-    }
-}
+//         req.session.lastPage = req.originalUrl;
+//         return res.redirect('/')
+//     }
+// }
 
 
 //Get add to cart
@@ -88,7 +88,7 @@ router.get('/add/:product', async(req,res)=>{
 
 
 //get checkout page
-router.get('/checkout', protectRoute, async (req,res)=>{
+router.get('/checkout', async (req,res)=>{
     const categories = await Category.find()
     const topProduct = await TopProduct.find()
     const user = await User.findOne()
