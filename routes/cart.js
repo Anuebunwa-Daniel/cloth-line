@@ -100,7 +100,7 @@ router.get('/checkout', async (req,res)=>{
             title: 'checkout',
             cart: req.session.cart,
             categories: categories,
-            user: user,
+            // user: user,
             topProduct: topProduct
         })
     }

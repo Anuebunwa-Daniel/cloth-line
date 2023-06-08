@@ -290,7 +290,7 @@ router.post('/login', [
                            res.render('index', {
                             user: user,
                             title: "BigStepper",
-                            name:user.username,
+                            // name:user.username,
                             categories: categories,
                             testimonies: testimonies,
                             topProduct: topProduct,
